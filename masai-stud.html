@@ -1,0 +1,177 @@
+<!-- Masai Students Pending
+Problem
+This will be a HTML, CSS, JS project.
+Create a form on left hand side of webpage to accept the student data . name and city must accept only string. 
+age and number must accept only number ( name, age, city, number )
+individual student data must be stored in object. think about how can you make use of constructor functions to
+easily create each individual student object.
+display all the student data on Right hand side of webpage. it should display as list.
+ you can use tables if you want.
+create a simple navbar on top showing masai school logo on left to finish the assignment. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai student -list</title>
+    <style type="text/css">
+        body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+        overflow: hidden;
+        background-color:rgb(80, 126, 173);
+        height: 70px;
+        }
+
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        .topnav a:hover {
+        background-color:orange;
+        color: black;
+        }
+
+        
+        #masai{
+            width: 80px;
+            height: 50px;
+            margin:left;
+            border-radius: 50%;
+        }
+        .color {
+            color:rgb(red, green, blue)
+        }
+
+        h2{
+            color:crimson;
+            margin-left: 20px;
+        }
+
+        #student{
+            width: 400px;
+            height: 500px;
+            margin-top: 20px;
+            border-radius: 20px;
+            margin-left: 20px;
+            /* border: 2px dotted orangered; */
+            background-color: darkseagreen;
+            float: left;
+        }
+        #right{
+            width: 400px;
+           height: 500px;
+            margin-top: 20px;
+           
+            margin-left: 20px;
+            /* border: 2px dotted rgb(44, 15, 5); */
+            float: left;
+            background-color: darksalmon;
+        }
+        #submit{
+            width: 100px;
+            height: 30px;
+            margin-left: 20px;
+            border-radius: 5px;
+            background:burlywood;
+            color: crimson;
+            font-size: 15px;
+
+        }
+        table, th, td {
+        border: 1px solid rgb(177, 93, 93);
+        color:darkblue;
+        }
+        #masai{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home"><img id="masai" src="https://pbs.twimg.com/profile_images/1112834951601303552/HtukY_d1.jpg" alt="Masai logo"></a>
+        
+    </div>
+    <div id="student">
+
+        <h2>Masai Students</h2>
+        <form id="masai">
+        <label  class="color" for="Rollno">Rollno:</label><br>
+        <input type="number" name="number" id="num"><br>
+        <label  class="color" for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label  class="color" for="city">City:</label><br>
+        <input type="text" id="city" name="city"><br>
+        <label  class="color" for="age">Age:</label><br>
+        <input type="number" id="age" name="age"/><br><br>
+        
+        <button id="submit" onclick="Addstu()">Add-Student</button>
+        </form> 
+       
+
+    </div>
+    <div id="right">
+        <table>
+
+        </table>
+    </div>
+
+    <script>
+        var form=document.querySelector('form');
+        var table=document.querySelector('table');
+        function Student(number,name,city,age){
+            
+            this.number=number;
+            this.name=name;
+            this.city=city;
+            this.age=age;
+           
+        }
+        function Addstu(e){
+            e.preventDefault();
+            var roll=document.getElementById('num').value;
+            var name=document.getElementById('name').value;
+            var city=document.getElementById('city').value;
+            var age=document.getElementById('age').value;
+
+            var row=document.createElement('tr');
+            var col1=document.createElement('td');
+            var col2=document.createElement('td');
+            var col3=document.createElement('td');
+            var col4=document.createElement('td');
+
+            col1.textContent=roll;
+            col2.textContent=name;
+            col3.textContent=city;
+            col4.textContent=age;
+            
+            row.appendChild(col1);
+            row.appendChild(col2);
+            row.appendChild(col3);
+            row.appendChild(col4);
+
+            table.appendChild(row)
+            document.getElementById('num').value="";
+            document.getElementById('name').value="";
+            document.getElementById('city').value="";
+            document.getElementById('age').value="";
+
+
+        }
+        form.addEventListener('submit',Addstu);
+
+
+    </script>
+</body>
+</html>
+
